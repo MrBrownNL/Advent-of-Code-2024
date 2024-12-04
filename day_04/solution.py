@@ -77,7 +77,7 @@ def count_xmas_patterns(grid):
 
     for r in range(rows - 2):
         for c in range(cols - 2):
-            if grid[r + 1][c + 1].upper() == "A":
+            if grid[r + 1][c + 1].upper() != "A":
                 continue
 
             main_diagonal = [grid[r][c], grid[r + 1][c + 1], grid[r + 2][c + 2]]
