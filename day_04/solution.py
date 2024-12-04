@@ -1,3 +1,4 @@
+import time
 from data_retriever import get_puzzle_input
 
 
@@ -76,6 +77,9 @@ def count_xmas_patterns(grid):
 
     for r in range(rows - 2):
         for c in range(cols - 2):
+            if grid[r + 1][c + 1].upper() == "A":
+                continue
+
             main_diagonal = [grid[r][c], grid[r + 1][c + 1], grid[r + 2][c + 2]]
             anti_diagonal = [grid[r][c + 2], grid[r + 1][c + 1], grid[r + 2][c]]
 
@@ -90,8 +94,12 @@ if __name__ == '__main__':
     input = get_puzzle_input('puzzle_input.txt')
     grid = parse_input(input)
 
+    start_time = time.time()
     result_part_1 = find_xmas_occurrences(grid)
-    print(f"Puzzle result part 1: {result_part_1}")
+    execution_time = time.time() - start_time
+    print(f"Puzzle result part 1 in {execution_time:.4f} seconds: {result_part_1}")
 
+    start_time = time.time()
     result_part_2 = count_xmas_patterns(grid)
-    print(f"Puzzle result part 2: {result_part_2}")
+    execution_time = time.time() - start_time
+    print(f"Puzzle result part 2 in {execution_time:.4f} seconds: {result_part_2}")
