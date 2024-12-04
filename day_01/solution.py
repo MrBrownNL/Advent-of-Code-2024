@@ -1,5 +1,5 @@
 from collections import Counter
-from data_retriever import get_puzzle_input
+from data_processor import get_puzzle_input
 
 def parse_input(content):
     first_column, second_column = zip(*(map(int, line.split()) for line in content.strip().split('\n')))
@@ -17,7 +17,7 @@ def calculate_similarity_score(left_list, right_list):
 
 
 if __name__ == "__main__":
-    content = get_puzzle_input('puzzle_input.txt')
+    content = get_puzzle_input(day=1)
     left_list, right_list = parse_input(content)
 
     total_distance = calculate_total_distance(left_list, right_list)

@@ -1,5 +1,5 @@
 import re
-from data_retriever import get_puzzle_input
+from data_processor import get_puzzle_input
 
 
 def get_sum_multiplications(memory_string):
@@ -42,7 +42,7 @@ def get_sum_enabled_multiplications(memory_string):
 
 
 if __name__ == '__main__':
-    input_memory = get_puzzle_input('puzzle_input.txt')
+    input_memory = get_puzzle_input(day=3)
 
     result_part_1 = get_sum_multiplications(input_memory)
     print(f"Puzzle result part 1: {result_part_1}")

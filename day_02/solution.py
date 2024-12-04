@@ -1,4 +1,4 @@
-from data_retriever import get_puzzle_input
+from data_processor import get_puzzle_input
 
 def parse_input(content):
     return [list(map(int, line.split())) for line in content.strip().split('\n')]
@@ -18,7 +18,7 @@ def count_safe_reports(reports, dampener=False):
     return sum(1 for report in reports if is_safe(report))
 
 if __name__ == '__main__':
-    content = get_puzzle_input('puzzle_input.txt')
+    content = get_puzzle_input(day=2)
     reports = parse_input(content)
 
     safe_reports_count = count_safe_reports(reports)

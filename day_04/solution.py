@@ -1,5 +1,5 @@
 import time
-from data_retriever import get_puzzle_input
+from data_processor import get_puzzle_input
 
 
 def parse_input(input):
@@ -91,7 +91,7 @@ def count_xmas_patterns(grid):
 
 
 if __name__ == '__main__':
-    input = get_puzzle_input('puzzle_input.txt')
+    input = get_puzzle_input(day=4)
     grid = parse_input(input)
 
     start_time = time.time()
