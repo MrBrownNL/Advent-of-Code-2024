@@ -16,7 +16,7 @@ Install dependencies:
 poetry install
 ```
 
-Then you are ready to go!
+Now you are ready to go!
 ```shell
 python main.py
 ```

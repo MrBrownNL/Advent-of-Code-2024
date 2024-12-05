@@ -16,6 +16,10 @@ def get_puzzle_input(day):
 
         return data
 
+    """ 
+    I'm using the get_data function here instead of the data function to improve readability 
+        and the ability to optimize code for past days
+    """
     data = get_data(day=day, year=os.getenv('YEAR'))
 
     with open(filename, 'w') as file:
