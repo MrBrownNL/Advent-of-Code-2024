@@ -41,6 +41,14 @@ def get_sum_enabled_multiplications(memory_string):
     return total_sum
 
 
+def solve_part_1(input_string):
+    return get_sum_multiplications(input_string)
+
+
+def solve_part_2(input_string):
+    return get_sum_enabled_multiplications(input_string)
+
+
 if __name__ == '__main__':
     input_memory = get_puzzle_input(day=3)
 

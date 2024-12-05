@@ -2,7 +2,21 @@
 
 I use AI as a tool to improve my Python skills, write efficient code, and learn new programming techniques, which significantly accelerated my learning curve and helped me understand complex concepts.
 
+This project is currently a work in progress. The ultimate goal is to auto-generate the solution files by constructing an agent using LangChain which takes the puzzle text as an input.
+
+## Installation
+
 Provide your Advent of Code session token to make use of the Advent of Code Data package:
 ```shell
 cp .env-example .env
+```
+
+Install dependencies:
+```shell
+poetry install
+```
+
+Then you are ready to go!
+```shell
+python main.py
 ```

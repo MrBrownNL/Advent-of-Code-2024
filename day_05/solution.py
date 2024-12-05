@@ -130,7 +130,7 @@ def get_middle_page(update):
     return update[mid_index]
 
 
-def solve_puzzle_1(input_string):
+def solve_part_1(input_string):
     """
     Solves the puzzle by validating updates and summing their middle pages.
 
@@ -149,7 +149,7 @@ def solve_puzzle_1(input_string):
     return sum(valid_middle_pages)
 
 
-def solve_puzzle_2(input_string):
+def solve_part_2(input_string):
     """
     Solves the puzzle by correcting updates and summing their middle pages.
 
@@ -172,10 +172,11 @@ if __name__ == '__main__':
     day = 5
     data = get_puzzle_input(day=day)
 
-    result_part_1 = solve_puzzle_1(data)
+    result_part_1 = solve_part_1(data)
     print(f"Puzzle result part 1: {result_part_1}")
-    submit_answer(answer=result_part_1, part=1, day=day)
+    # submit_answer(answer=result_part_1, part=1, day=day)
 
-    result_part_2 = solve_puzzle_2(data)
+    result_part_2 = solve_part_2(data)
     print(f"Puzzle result part 2: {result_part_2}")
-    submit_answer(answer=result_part_2, part=2, day=day)
+    # submit_answer(answer=result_part_2, part=2, day=day)
+

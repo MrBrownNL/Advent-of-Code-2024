@@ -17,6 +17,17 @@ def count_safe_reports(reports, dampener=False):
 
     return sum(1 for report in reports if is_safe(report))
 
+
+def solve_part_1(input_string):
+    reports = parse_input(input_string)
+    return count_safe_reports(reports)
+
+
+def solve_part_2(input_string):
+    reports = parse_input(input_string)
+    return count_safe_reports(reports, dampener=True)
+
+
 if __name__ == '__main__':
     content = get_puzzle_input(day=2)
     reports = parse_input(content)

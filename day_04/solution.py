@@ -90,6 +90,16 @@ def count_xmas_patterns(grid):
     return xmas_count
 
 
+def solve_part_1(input_string):
+    grid = parse_input(input_string)
+    return find_xmas_occurrences(grid)
+
+
+def solve_part_2(input_string):
+    grid = parse_input(input_string)
+    return count_xmas_patterns(grid)
+
+
 if __name__ == '__main__':
     input = get_puzzle_input(day=4)
     grid = parse_input(input)

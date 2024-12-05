@@ -1,6 +1,4 @@
 import os
-from numbers import Number
-from typing import Literal
 
 from dotenv import load_dotenv
 from aocd import get_data, submit
@@ -9,7 +7,8 @@ load_dotenv()
 
 
 def get_puzzle_input(day):
-    filename = 'puzzle_input.txt'
+    project_root = os.path.dirname(os.path.abspath(__file__))
+    filename = f"{project_root}/day_{day:02}/puzzle_input.txt"
 
     if os.path.exists(filename):
         with open(filename, 'r') as file:
@@ -25,6 +24,6 @@ def get_puzzle_input(day):
     return data
 
 
-def submit_answer(answer: Number, day: int, part: Literal[1,2]):
+def submit_answer(answer: int, day: int, part: int):
     part = {1: "a", 2: "b"}.get(part)
     submit(answer=answer, part=part, day=day, year=os.getenv('YEAR'))
