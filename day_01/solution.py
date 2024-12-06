@@ -1,5 +1,5 @@
 from collections import Counter
-from data_processor import get_puzzle_input
+from modules.data_processor import get_puzzle_input
 
 def parse_input(content):
     first_column, second_column = zip(*(map(int, line.split()) for line in content.strip().split('\n')))

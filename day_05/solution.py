@@ -1,4 +1,4 @@
-from data_processor import get_puzzle_input, submit_answer
+from modules.data_processor import get_puzzle_input
 
 
 def parse_input(input_string):

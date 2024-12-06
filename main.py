@@ -1,5 +1,5 @@
 from importlib import import_module
-from data_processor import get_puzzle_input, submit_answer
+from modules.data_processor import get_puzzle_input
 from datetime import datetime
 
 

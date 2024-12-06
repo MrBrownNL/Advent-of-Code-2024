@@ -1,5 +1,5 @@
 import re
-from data_processor import get_puzzle_input
+from modules.data_processor import get_puzzle_input
 
 
 def get_sum_multiplications(memory_string):

@@ -1,4 +1,4 @@
-from data_processor import get_puzzle_input
+from modules.data_processor import get_puzzle_input
 
 def parse_input(content):
     return [list(map(int, line.split())) for line in content.strip().split('\n')]

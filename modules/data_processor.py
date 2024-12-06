@@ -1,13 +1,14 @@
 import os
+from pathlib import Path
 
 from dotenv import load_dotenv
 from aocd import get_data, submit
 
 load_dotenv()
 
+project_root = Path(__file__).parent.parent
 
 def get_puzzle_input(day):
-    project_root = os.path.dirname(os.path.abspath(__file__))
     filename = f"{project_root}/day_{day:02}/puzzle_input.txt"
 
     if os.path.exists(filename):
