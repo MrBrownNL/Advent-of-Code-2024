@@ -2,9 +2,7 @@
 
 I use AI as a tool to improve my Python skills, write efficient code, and learn new programming techniques, which significantly accelerated my learning curve and helped me understand complex concepts.
 
-Daily solutions will be posted with 1 day delay 😏
-
-This project is currently a work in progress. The ultimate goal is to auto-generate the solution files by constructing an agent using LangChain which takes the puzzle text as an input.
+This project is currently a work in progress. The ultimate goal is to auto-generate and execute the solution files by constructing an agent using LangChain which takes the puzzle text as an input.
 
 ## Installation
 
