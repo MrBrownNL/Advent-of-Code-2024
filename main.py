@@ -35,5 +35,3 @@ if __name__ == '__main__':
 
     print(f"The answer is: {result}")
 
-    # submit_answer(result, part=part, day=day)
-
