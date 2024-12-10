@@ -18,7 +18,7 @@ I use AI as a tool to improve my Python skills, write efficient code, and learn 
 - Day 5: 
   - Lazy day, used AI to generate Python code to solve the puzzles, learned about the set object and reverse function.
 - Day 6: 
-  - Used the previous learned grid iterating techniques to solve part 1 which was quite easy. I had no idea how to solve part 2 so I borrowed code from @wijnand-gritter and made an attempt to optimize the brute force way which partly worked but is still under [Open questions](#Open-questions).
+  - Used the previous learned grid iterating techniques to solve part 1 which was quite easy. I had no idea how to solve part 2 so I borrowed code from @wijnand-gritter and made an attempt to optimize the brute force way which is about 10% faster. I was not satisfied with this and used AI to optimise it using a recursive dfs approach which reduced processing time with 75%!
 - Day 7: 
   - Used AI for initial code for part 1, learned about the product module, implemented part 2 and refactored the code.
 - Day 8: 
@@ -29,8 +29,7 @@ I use AI as a tool to improve my Python skills, write efficient code, and learn 
   - My initial code for part 1 generated the answer for part 2 so part 2 was a quick win. Only used AI to optimize and it was pretty close to my code except for the nested dfs function which cleaned up my code a lot.
 
 ### Open questions
-I can use some help with the following code which needs optimizations or to fix crappy code 😉:
-- Day 6 part 2 optimized - The code hangs although it finds the answer.
+- None for now.
 
 ## Installation
 

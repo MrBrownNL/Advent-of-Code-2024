@@ -1,6 +1,9 @@
 import time
+import sys
 
 from modules.data_processor import get_puzzle_input
+
+sys.setrecursionlimit(17500)
 
 directions = [(-1, 0), (0, 1), (1, 0), (0, -1)]
 direction_symbols = ['^', '>', 'v', '<']
@@ -144,39 +147,70 @@ def solve_part_2(input_map):
     return valid_positions
 
 
+def dfs(grid, r, c, facing, r_obstruction, c_obstruction, visited):
+    rows, cols = len(grid), len(grid[0])
+
+    # Base cases
+    if (r, c, facing) in visited:
+        return True
+
+    visited.add((r, c, facing))
+
+    # Get next position
+    dr, dc = directions[facing]
+    nr, nc = r + dr, c + dc
+
+    # Check bounds and obstacles
+    if (nr < 0 or nr >= rows or nc < 0 or nc >= cols):
+        return False
+
+    # Check for obstacle (including artificial obstruction)
+    if (nr == r_obstruction and nc == c_obstruction) or grid[nr][nc] == '#':
+        # Turn right and continue from current position
+        return dfs(grid, r, c, (facing + 1) % 4, r_obstruction, c_obstruction, visited)
+
+    # Move forward
+    return dfs(grid, nr, nc, facing, r_obstruction, c_obstruction, visited)
+
+
+def get_initial_path(grid, r_start, c_start, facing):
+    rows, cols = len(grid), len(grid[0])
+    path = set()
+    r, c = r_start, c_start
+
+    while True:
+        path.add((r, c))
+        dr, dc = directions[facing]
+        nr, nc = r + dr, c + dc
+
+        if (nr < 0 or nr >= rows or nc < 0 or nc >= cols):
+            break
+        elif grid[nr][nc] == '#':
+            facing = (facing + 1) % 4
+        else:
+            r, c = nr, nc
+
+    return path
+
+
 def solve_part_2_optimized(input_map):
-    global marked_grid, marked_positions
-
     grid = get_grid(input_map)
-
     r_start, c_start, facing = find_starting_position(grid)
 
+    # Get initial path without obstructions
+    initial_path = get_initial_path(grid, r_start, c_start, facing)
     valid_positions = 0
 
-    mark_grid(grid, r_start, c_start, facing)
-
-    index = 0
-
-    while index < len(marked_positions):
-        # if index % 1000 == 0:
-        #     print(f"Checked {index}/{len(marked_positions)} positions so far and already found {valid_positions} valid positions...")
-
-        r, c = marked_positions[index]
-        if grid[r][c] == "#" or (r == r_start and c == c_start):
+    # Check each position in the initial path
+    for r, c in initial_path:
+        if grid[r][c] == '#' or (r == r_start and c == c_start):
             continue
 
-        # Loop with an obstruction at (r, c) ?
-        if detect_loop(r_start, c_start, facing, r, c):
+        # Try to find a loop with obstruction at (r, c)
+        if dfs(grid, r_start, c_start, facing, r, c, set()):
             valid_positions += 1
 
-        index += 1
-
-        # TODO: Fix this weird(?) behaviour...
-        if index == 5531:
-            break
-
     return valid_positions
-
 
 if __name__ == '__main__':
     day = 6
@@ -184,7 +218,6 @@ if __name__ == '__main__':
 
     result_part_1 = solve_part_1(data)
     print(f"Puzzle result part 1: {result_part_1}")
-    # submit_answer(answer=result_part_1, part=1, day=day)
 
     start_time = time.time()
     result_part_2 = solve_part_2(data)
@@ -196,4 +229,3 @@ if __name__ == '__main__':
     execution_time = time.time() - start_time
 
     print(f"Puzzle result part 2 optimized in {execution_time:.4}s: {result_part_2}")
-    # submit_answer(answer=result_part_2, part=2, day=day)
