@@ -25,7 +25,8 @@ I use AI as a tool to improve my Python skills, write efficient code, and learn 
   - Tested my side project on part 1 and accidentally submitted the solution before the daily leaderboard was full (sorry). Also used AI to create the code for part 2 (yes, AI made me a bit lazy today). Learned about the enumerate function.
 - Day 9: 
   - AI did not produce satisfying code so I started this one on my own and part 1 was not that hard after all. Part 2 was more challenging and fun to do everything in reverse although it is not very fast (yet). If I have the time I will try to optimize my solution using AI.
-
+- Day 10:
+  - My initial code for part 1 generated the answer for part 2 so part 2 was a quick win. Only used AI to optimize and it was pretty close to my code except for the nested dfs function which cleaned up my code a lot.
 
 ### Open questions
 I can use some help with the following code which needs optimizations or to fix crappy code 😉:
