@@ -19,10 +19,6 @@ def process_stone_optimized(stone):
 
     result = stone * 2024
 
-    # Add a size limit to prevent extremely large numbers
-    if result > 10**12:  # Limit to 1 trillion
-        return [result % 10**12]
-
     return [result]
 
 
