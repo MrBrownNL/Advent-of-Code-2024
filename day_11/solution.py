@@ -1,8 +1,29 @@
+from collections import Counter
+
 from modules.data_processor import get_puzzle_input
 
 
 def get_stones(puzzle_input):
     return list(map(int, puzzle_input.strip().split()))
+
+
+def process_stone_optimized(stone):
+    if stone == 0:
+        return [1]
+
+    if len(str(stone)) % 2 == 0:
+        half_stone_length = int(len(str(stone)) / 2)
+        left = int(str(stone)[:half_stone_length])
+        right = int(str(stone)[half_stone_length:])
+        return [left, right]
+
+    result = stone * 2024
+
+    # Add a size limit to prevent extremely large numbers
+    if result > 10**12:  # Limit to 1 trillion
+        return [result % 10**12]
+
+    return [result]
 
 
 def solve_part_1(input):
@@ -30,7 +51,22 @@ def solve_part_1(input):
 
 
 def solve_part_2(input):
-    pass
+    stones = get_stones(input)
+
+    # Use Counter instead of list to store stone counts
+    current_stones = Counter(stones)
+
+    for step in range(75):
+        new_stones = Counter()
+
+        for stone, count in current_stones.items():
+            processed = process_stone_optimized(stone)
+            for new_stone in processed:
+                new_stones[new_stone] += count
+
+        current_stones = new_stones
+
+    return sum(current_stones.values())
 
 
 if __name__ == '__main__':

@@ -27,6 +27,8 @@ I use AI as a tool to improve my Python skills, write efficient code, and learn 
   - AI did not produce satisfying code so I started this one on my own and part 1 was not that hard after all. Part 2 was more challenging and fun to do everything in reverse although it is not very fast (yet). If I have the time I will try to optimize my solution using AI.
 - Day 10:
   - My initial code for part 1 generated the answer for part 2 so part 2 was a quick win. Only used AI to optimize and it was pretty close to my code except for the nested dfs function which cleaned up my code a lot.
+- Day 11:
+  - Part 1 was pretty straight forwarded, for part 2 I was unable to optimize the code from part 1 to run smoothly so I asked AI to suggest a different approach which worked out great as I learned about the Counter class which stores all unique values and how many times they exist. We do not have to keep all the stones in a ordered straight line, we have to count the amount of stones after 75 blinks. This was an eye opener for me.
 
 ### Open questions
 - None for now.
