@@ -2,24 +2,16 @@ from modules.data_processor import get_puzzle_input
 
 
 def parse_disk_map(disk_map):
-    position = 0
+    result = []
     file_id = 0
-    disk = []
-
-    for char in disk_map:
-        if position % 2 == 0:
-            character_to_add = file_id
+    for i, count in enumerate(disk_map):
+        count = int(count)
+        if i % 2 == 0:
+            result.extend([file_id] * count)
             file_id += 1
         else:
-            character_to_add = "."
-
-        for i in range(int(char)):
-            disk.append(character_to_add)
-
-        position += 1
-
-    return disk
-
+            result.extend(['.'] * count)
+    return result
 
 def compact_disk(disk):
     while '.' in disk:
@@ -44,68 +36,64 @@ def compact_disk(disk):
 
 
 def compact_disk_optimized(disk):
-    def get_most_right_file(start_index):
-        right_most_file_start_index = -1
-        file = []
-        file_id = -1
+    length = len(disk)
+    # Pre-calculate file positions for faster lookup
+    file_positions = {}
+    for i in range(length - 1, -1, -1):
+        if isinstance(disk[i], int):
+            if disk[i] not in file_positions:
+                file_positions[disk[i]] = []
+            file_positions[disk[i]].append(i)
 
-        for i in range(start_index - 1, -1, -1):
-            if isinstance(disk[i], int):
-                if file_id == -1:
-                    file_id = disk[i]
+    # Find continuous spaces
+    spaces = []
+    current_space = []
+    for i in range(length):
+        if disk[i] == '.':
+            current_space.append(i)
+        elif current_space:
+            spaces.append(current_space[:])
+            current_space = []
+    if current_space:
+        spaces.append(current_space)
 
-                if disk[i] == file_id:
-                    file.append(disk[i])
-                    right_most_file_start_index = i
-            else:
-                if file_id > -1:
-                    break
+    # Process files from right to left
+    for file_id in sorted(file_positions.keys(), reverse=True):
+        positions = file_positions[file_id]
+        if not positions:
+            continue
 
-        return right_most_file_start_index, file
+        file_size = len(positions)
 
-    def get_left_most_free_space_for_file(file):
-        space_needed = len(file)
-        free_space = 0
-        free_space_start_index = -1
+        # Find leftmost suitable space
+        best_space = None
+        for space in spaces:
+            if len(space) >= file_size and space[0] < positions[0]:
+                best_space = space
+                break
 
-        for i in range(len(disk) - 1):
-            if isinstance(disk[i], str):
-                if free_space_start_index == -1:
-                    free_space_start_index = i
-                free_space += 1
+        if best_space:
+            # Move file
+            for i in range(file_size):
+                disk[best_space[i]] = file_id
+                disk[positions[i]] = '.'
 
-                if free_space == space_needed:
-                    break
-            else:
-                free_space = 0
-                free_space_start_index = -1
+            # Update spaces
+            spaces.remove(best_space)
+            if len(best_space) > file_size:
+                spaces.append(best_space[file_size:])
 
-        return free_space_start_index
-
-    def move_file(file, from_index, to_index):
-        for i, file_id in enumerate(file):
-            disk[to_index + i] = file_id
-            disk[from_index + i] = '.'
-
-    start_index = len(disk)
-    while start_index > 1:
-        from_index, file = get_most_right_file(start_index)
-        to_index = get_left_most_free_space_for_file(file)
-
-        if from_index > to_index:
-            move_file(file, from_index, to_index)
-
-        start_index = from_index
+            new_space = positions
+            spaces.append(new_space)
+            spaces.sort(key=lambda x: x[0])
 
     return disk
 
 
 def calculate_checksum(disk):
-    checksum = 0
-    for pos, block in enumerate(disk):
-        if isinstance(block, int):
-            checksum += pos * block
-    return checksum
+    # Use list comprehension and enumerate for better performance
+    return sum(pos * block for pos, block in enumerate(disk) if isinstance(block, int))
+
 
 def solve_part_1(disk_map):
     disk = parse_disk_map(disk_map)
