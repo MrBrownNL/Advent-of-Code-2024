@@ -98,6 +98,8 @@ def solve_part_1(input_str):
     return total_gps
 
 
+def solve_part_2(input_str):
+    pass
 
 
 if __name__ == '__main__':
