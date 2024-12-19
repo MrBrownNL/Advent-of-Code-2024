@@ -29,7 +29,12 @@ I use AI as a tool to improve my Python skills, write efficient code, and learn 
   - My initial code for part 1 generated the answer for part 2 so part 2 was a quick win. Only used AI to optimize and it was pretty close to my code except for the nested dfs function which cleaned up my code a lot.
 - Day 11:
   - Part 1 was pretty straight forwarded, for part 2 I was unable to optimize the code from part 1 to run smoothly so I asked AI to suggest a different approach which worked out great as I learned about the Counter class which stores all unique values and how many times they exist. We do not have to keep all the stones in a ordered straight line, we have to count the amount of stones after 75 blinks. This was an eye opener for me.
-
+- Day 12-17: TODO
+- Day 18:
+  - Generated a grid, plotted the first 1024 bytes on it and used the deque class to find all possible next steps in the grid, the first one ending on 70,70 was the shortest. Same for part 2, difference was to add another byte until it was blocking. Used AI to optimize which removed the grid and placed all byte positions in a set to loop over a virtual grid.
+- Day 19:
+  - Pretty basic recursive functions. Used the valid designs from part 1 for part 2. No AI needed today.
+  
 ### Open questions
 - None for now.
 
